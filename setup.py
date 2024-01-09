@@ -9,7 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'levenshtein',
-
+        'transformers'
     ],
     python_requires='>=3.8'
 )
