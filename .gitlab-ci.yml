@@ -30,6 +30,7 @@ build:
 test:
   stage: test
   script:
+    - pip install .
     - python -m unittest tests
 
 deploy to package registry:
