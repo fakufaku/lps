@@ -32,7 +32,7 @@ test:
   stage: test
   script:
     - pip install .
-    - python -m unittest tests
+    - python -m unittest discover tests
 
 deploy to package registry:
   stage: deploy
