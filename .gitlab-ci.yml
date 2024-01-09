@@ -2,8 +2,8 @@ default:
   image: python:latest
   tags:
     - "docker-alpine"
-variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+#variables:
+#  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 stages:
   - build
