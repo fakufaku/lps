@@ -1,7 +1,7 @@
 default:
   image: python:3.9-alpine
   tags:
-    - "cirunner:q"
+    - "cirunner"
 stages:
   - build and deploy
   - pages
