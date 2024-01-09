@@ -16,6 +16,7 @@ stages:
 
 before_script:
   - python --version ; pip --version
+  - ls
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
