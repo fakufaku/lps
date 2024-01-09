@@ -1,21 +1,34 @@
 default:
-  image: python:3.9-alpine
+  image: python:latest
   tags:
     - "docker-alpine"
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
 stages:
-  - build and deploy
-  - pages
+  - build
+  - test
+  - deploy
 
 before_script:
-  - python -V
+  - python --version ; pip --version
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
 
-build and publish pip pkg:
-  stage: build and deploy
+build:
+  stage: build
   script:
     - python setup.py sdist bdist_wheel
+
+test:
+  stage: test
+  script:
+    - python -m tests
+
+deploy to package registry:
+  stage: deploy
+  script:
     - pip install twine
     - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
   artifacts:
