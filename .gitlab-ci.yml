@@ -2,8 +2,12 @@ default:
   image: python:latest
   tags:
     - "docker-alpine"
-#variables:
-#  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+cache:
+  paths:
+    - .cache/pip
+
 
 stages:
   - build
@@ -16,10 +20,12 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
 
+
 build:
   stage: build
   script:
-    - python setup.py sdist bdist_wheel
+    - pip install setuptool
+    - python setup.py sdist bdist_wheel1
 
 test:
   stage: test
