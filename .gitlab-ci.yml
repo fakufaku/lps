@@ -10,9 +10,8 @@ cache:
 
 
 stages:
-  - build
   - test
-  - deploy
+  - build and deploy
 
 before_script:
   - python --version ; pip --version
@@ -20,12 +19,7 @@ before_script:
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
-
-
-build:
-  stage: build
-  script:
-    - python setup.py sdist bdist_wheel
+  - pip install setuptools wheel
 
 test:
   stage: test
@@ -34,10 +28,10 @@ test:
     - python -m unittest discover tests
 
 deploy to package registry:
-  stage: deploy
+  stage: build and deploy
   script:
-    - pip install setuptools wheel
     - pip install twine
+    - python setup.py sdist bdist_wheel
     - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*
   artifacts:
     paths:
