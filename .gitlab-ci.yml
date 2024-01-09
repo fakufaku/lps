@@ -30,7 +30,7 @@ build:
 test:
   stage: test
   script:
-    - python -m tests
+    - python -m unittest tests
 
 deploy to package registry:
   stage: deploy
