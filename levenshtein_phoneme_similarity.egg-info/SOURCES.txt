@@ -1,9 +1,0 @@
-setup.py
-levenshtein_phoneme_similarity.egg-info/PKG-INFO
-levenshtein_phoneme_similarity.egg-info/SOURCES.txt
-levenshtein_phoneme_similarity.egg-info/dependency_links.txt
-levenshtein_phoneme_similarity.egg-info/requires.txt
-levenshtein_phoneme_similarity.egg-info/top_level.txt
-src/__init__.py
-src/lps/__init__.py
-src/lps/helloworld.py
