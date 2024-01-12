@@ -5,7 +5,7 @@ setup(
     version="0.1.0",
     author="Jan Pirklbauer",
     author_email="jan.pirklbauer@tu-bs.de",
-    description="Implementation of the Levneshtein Phoneme Distance",
+    description="Implementation of the Levenshtein Phoneme Distance",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     install_requires=[
