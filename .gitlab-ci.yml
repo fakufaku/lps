@@ -27,6 +27,7 @@ test:
   script:
     - pip install .
     - pip install soundfile
+    - apt install espeak
     - python -m unittest discover tests
 
 deploy to package registry:
