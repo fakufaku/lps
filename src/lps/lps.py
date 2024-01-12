@@ -22,8 +22,12 @@ class PhonemePredictor(Module):
         return self.processor.batch_decode(predicted_ids)
 
 
-def lps(self, sample: np.ndarray, reference=None, sampling_frequency=16000) -> float:
-    sample_phonems = self.phoneme_predictor.forward(sample)[0].replace(" ", "")
-    ref_phonems = self.phoneme_predictor.forward(reference)[0].replace(" ", "")
-    lev_distance = distance(sample_phonems, ref_phonems)
-    return 1 - lev_distance / len(ref_phonems)
+class LevenshteinPhonemeSimilarity:
+    def __init__(self):
+        self.phoneme_predictor = PhonemePredictor()
+
+    def __call__(self, sample: np.ndarray, reference: np.ndarray) -> float:
+        sample_phonems = self.phoneme_predictor.forward(sample)[0].replace(" ", "")
+        ref_phonems = self.phoneme_predictor.forward(reference)[0].replace(" ", "")
+        lev_distance = distance(sample_phonems, ref_phonems)
+        return 1 - lev_distance / len(ref_phonems)

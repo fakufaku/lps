@@ -9,6 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'levenshtein',
+        'phonemizer',
         'transformers'
     ],
     python_requires='>=3.8'

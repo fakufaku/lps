@@ -20,11 +20,13 @@ before_script:
   - virtualenv venv
   - source venv/bin/activate
   - pip install setuptools wheel
+  - pip install torch torchvision torchaudio
 
 test:
   stage: test
   script:
     - pip install .
+    - pip install soundfile
     - python -m unittest discover tests
 
 deploy to package registry:
